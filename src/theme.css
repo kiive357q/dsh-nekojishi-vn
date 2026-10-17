@@ -1,0 +1,156 @@
+/* Scope all skin rules. No hashed class names, DOM relocation or token polling. */
+html[data-neko-enabled="true"] {--vn-scene:url('/nekojishi-assets/room-night.png');--vn-ink:#f4f2ed;--vn-muted:#d0cbc2;--vn-gold:#ffa222;--vn-shadow:0 1px 3px #000,0 0 5px #000a;color-scheme:dark}
+html[data-neko-enabled="true"][data-neko-scene="day"] {--vn-scene:url('/nekojishi-assets/room-day.png')}
+html[data-neko-enabled="true"] body {background:#16171b var(--vn-scene) center/cover fixed!important}
+html[data-neko-enabled="true"] #root {background:transparent!important}
+html[data-neko-enabled="true"] [data-neko-frame] {background:transparent!important}
+html[data-neko-enabled="true"] [data-neko-frame]::before {background:rgba(14,16,21,.28)!important}
+html[data-neko-enabled="true"] [data-neko-center] {position:relative;isolation:isolate;background:transparent!important;border-radius:0!important}
+html[data-neko-enabled="true"] [data-neko-center] > [data-slot="main"] {position:relative;z-index:1;flex:1;min-height:0}
+html[data-neko-enabled="true"] [data-neko-center] [data-phase] {background:transparent!important}
+html[data-neko-enabled="true"] [data-neko-sidebar] {background:transparent!important;border-color:transparent!important}
+html[data-neko-enabled="true"] [data-neko-sidebar] > [data-slot="sidebar"],
+html[data-neko-enabled="true"] [data-slot="rightbar"],
+html[data-neko-enabled="true"] [data-slot="rightbar.session"] {background:transparent!important}
+html[data-neko-enabled="true"] [data-neko-frame][data-sidebar-collapsed] [data-neko-sidebar] {visibility:hidden;pointer-events:none}
+html[data-neko-enabled="true"] [data-neko-frame][data-sidebar-collapsed] [data-neko-sidebar] * {visibility:hidden!important;pointer-events:none!important}
+html[data-neko-enabled="true"] [data-slot="conversation.session.header.corner"] {visibility:hidden;pointer-events:none}
+/* The native rail still owns its geometry. Only the two explicit openers remain painted. */
+html[data-neko-enabled="true"] [data-neko-content] {
+ --dsh-chat-content-width:min(var(--dsh-chat-user-width,var(--vn-flow-width,640px)),var(--vn-flow-width,640px))!important;
+ --dsh-composer-card-max-width:min(1480px,calc(100% - 80px))!important;
+ --dsh-composer-side-clearance:20px!important;
+ position:relative;z-index:1;min-height:0;min-width:0;background:transparent!important;
+}
+html[data-neko-enabled="true"] [data-conversation-scroll] {background:transparent!important;scrollbar-color:#ded7ca88 transparent}
+html[data-neko-enabled="true"] [data-composer-seat] {background:transparent!important;padding-bottom:0;isolation:isolate}
+html[data-neko-enabled="true"] [data-phase="hero"] [data-conversation-scroll] {justify-content:flex-end!important}
+html[data-neko-enabled="true"] [data-phase="hero"] [data-composer-seat] {margin-top:auto;padding-bottom:0}
+html[data-neko-enabled="true"] [data-phase="hero"] [data-slot="conversation.hero.brand.mark"] {display:none}
+html[data-neko-enabled="true"] [data-composer-seat] div:has(> div > div > span > [data-slot="conversation.hero.brand.mark"]) {display:none}
+html[data-neko-enabled="true"] [data-composer-card] {
+ position:relative;isolation:isolate;border:0!important;border-image:none!important;
+ background:transparent!important;border-radius:10px!important;box-shadow:none!important;backdrop-filter:none!important;
+ color:var(--vn-ink);padding:20px 24px!important;min-height:126px;
+}
+html[data-neko-enabled="true"] [data-composer-card]::before {content:"";position:absolute;inset:0;z-index:-1;border:12px solid transparent;border-image:url('/nekojishi-assets/dialogue.png') 12 fill stretch;opacity:.75;pointer-events:none}
+html[data-neko-enabled="true"] [data-composer-card] [contenteditable] {color:var(--vn-ink)!important;caret-color:var(--vn-gold);font-size:var(--dsh-content-font-size,16px);line-height:1.65}
+html[data-neko-enabled="true"] [data-input-scroll] {max-height:min(30vh,320px)!important}
+html[data-neko-enabled="true"] [data-chat-flow] {position:relative;left:var(--vn-flow-offset,0px);color:var(--vn-ink);font-size:var(--dsh-content-font-size,16px);line-height:1.8}
+html[data-neko-enabled="true"][data-neko-shadow="true"] [data-chat-flow] :is(p,li,h1,h2,h3,h4,blockquote),
+html[data-neko-enabled="true"][data-neko-shadow="true"] [data-neko-sidebar] :is(span,p,a),
+html[data-neko-enabled="true"][data-neko-shadow="true"] [data-slot="rightbar"] :is(span,p,a) {text-shadow:var(--vn-shadow)}
+html[data-neko-enabled="true"] [data-chat-flow] :is(p,li,h1,h2,h3,h4,blockquote) {color:var(--vn-ink)}
+html[data-neko-enabled="true"] [data-chat-flow] pre {text-shadow:none;max-width:100%;overflow-x:auto;background:rgba(17,20,27,.88)!important}
+html[data-neko-enabled="true"] [data-chat-flow] table {text-shadow:none;background:rgba(17,20,27,.72)}
+html[data-neko-enabled="true"] [data-chat-flow] img {max-width:100%;height:auto}
+html[data-neko-enabled="true"] [data-chat-flow] a {color:#ffd18a}
+html[data-neko-enabled="true"] [data-slot="conversation.header"] {color:var(--vn-ink);background:transparent}
+/* Preserve capsule buttons. Transparency affects surfaces, never their controls. */
+html[data-neko-enabled="true"] :is([role="dialog"],[aria-modal="true"]) {background-image:linear-gradient(#10131cbb,#10131cdd),var(--vn-scene)!important;background-position:center!important;background-size:cover!important;color:var(--vn-ink)}
+html[data-neko-enabled="true"] :is([role="dialog"],[aria-modal="true"]) :is(h1,h2,h3,legend,label) {color:var(--vn-ink)}
+html[data-neko-enabled="true"] [data-conversation-composer-overlay] {background:transparent!important}
+/* Blur only the native resource panel's full-screen backdrop, never its content. */
+html[data-neko-enabled="true"] [data-sidebar-right-panel="fullscreen"][data-sidebar-right-open]::before {content:"";position:fixed;inset:0;z-index:39;background:rgba(15,20,29,.88);backdrop-filter:blur(24px) saturate(.55);-webkit-backdrop-filter:blur(24px) saturate(.55);pointer-events:auto}
+/* The actual question component and its answer/timeout logic remain native. */
+html[data-neko-enabled="true"] [data-question-key] {width:min(900px,90%);margin:0 auto 24px;color:var(--vn-ink)}
+html[data-neko-enabled="true"] [data-question-key] > section {background:linear-gradient(#10131cce,#10131cee),var(--vn-scene) center/cover!important;border:1px solid #ffffff55;border-radius:2px;box-shadow:0 10px 40px #0007;max-width:none;width:100%;max-height:min(72dvh,700px)}
+html[data-neko-enabled="true"] [data-question-key] h2 {color:#ffd294;font-size:18px;line-height:1.7;text-shadow:var(--vn-shadow)}
+html[data-neko-enabled="true"] [data-question-key] [data-question-scroll] {max-height:min(48dvh,460px);padding:18px 24px}
+html[data-neko-enabled="true"] [data-question-key] :is([role="radiogroup"],[role="group"]) {display:flex;flex-direction:column;gap:12px}
+html[data-neko-enabled="true"] [data-question-key] button:is([role="radio"],[role="checkbox"]) {border:solid transparent;border-width:9px 28px;border-image:url('/nekojishi-assets/choice.png') 9 28 fill stretch;background:transparent;color:#f6f4ee;border-radius:0;min-height:54px;justify-content:center;text-align:center;text-shadow:var(--vn-shadow);transition:filter 120ms}
+html[data-neko-enabled="true"] [data-question-key] button:is([role="radio"],[role="checkbox"]):is(:hover,[aria-checked="true"]) {border-image-source:url('/nekojishi-assets/choice-hover.png');color:#ffd294}
+html[data-neko-enabled="true"] [data-question-key] footer {background:transparent}
+
+.vn-shell {pointer-events:none!important;position:absolute;inset:0;font-family:"Microsoft YaHei",sans-serif}
+.vn-stage {position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none;contain:paint}
+.vn-vignette {position:absolute;inset:0;background:linear-gradient(90deg,#090b1033,transparent 26%,transparent 74%,#090b1033),linear-gradient(0deg,#07090f44,transparent 35%);pointer-events:none}
+.vn-character {position:absolute;bottom:0;width:auto;height:var(--vn-sprite-height,0px);max-width:none;object-fit:contain;object-position:center bottom;filter:drop-shadow(0 5px 12px #0005);user-select:none;-webkit-user-drag:none;transform-origin:50% 100%;will-change:auto;transition:opacity 180ms ease}
+.vn-character-left {left:var(--vn-left-x,40px)}
+.vn-character-right {left:var(--vn-right-x,800px)}
+html[data-neko-motion="true"] .vn-character {animation:vn-breath 7s ease-in-out infinite}
+.vn-stage[data-compact="true"] .vn-character {opacity:.68}
+@keyframes vn-breath {0%,100%{transform:scaleY(1)}50%{transform:scaleY(1.008)}}
+.vn-status {position:absolute;z-index:3;left:var(--vn-composer-left,40px);bottom:calc(var(--vn-composer-bottom,180px) + 28px);display:flex;align-items:center;gap:8px;color:#fff;text-shadow:var(--vn-shadow);max-width:220px;height:72px}
+.vn-status img {width:62px;height:62px;object-fit:contain;filter:drop-shadow(0 1px 2px #0009)}
+.vn-status strong {display:block;font-weight:500;font-size:16px;color:#ffa222}
+.vn-status small {display:block;font-size:12px;line-height:1.7;color:#e5e0d8}
+.vn-main-title {position:absolute;left:50%;top:12%;width:min(340px,45%);transform:translateX(-50%)}
+.vn-main-title img {width:100%;filter:drop-shadow(0 4px 14px #0009)}
+.vn-side-toggle {position:absolute;bottom:31px;pointer-events:auto;z-index:30}
+.vn-side-toggle-left {left:12px;bottom:39px}.vn-side-toggle-right {right:12px}
+.vn-game-button {width:34px;height:34px;display:inline-grid;place-items:center;padding:4px;border:0;background:transparent;cursor:pointer;color:#fff;border-radius:0;vertical-align:middle;transition:filter 120ms,transform 120ms}
+.vn-game-button img {width:100%;height:100%;object-fit:contain;filter:drop-shadow(0 1px 2px #0009)}
+.vn-game-button:hover:not(:disabled) {filter:brightness(1.6);transform:translateY(-1px)}
+.vn-game-button:focus-visible {outline:2px solid #ffc36c;outline-offset:2px}
+.vn-game-button:disabled {opacity:.35;cursor:not-allowed}
+.vn-native-actions {display:inline-flex;align-items:center;gap:2px;flex:none}
+.vn-native-actions .vn-game-button {width:26px;height:26px;padding:3px}
+.vn-sr {position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.vn-modal-mask {position:fixed;inset:0;z-index:10000;background:rgba(0,0,0,.45);display:flex;align-items:center;justify-content:center;padding:clamp(12px,3vw,40px);pointer-events:auto;font-family:"Microsoft YaHei",sans-serif}
+.vn-modal {box-sizing:border-box;width:min(1080px,100%);max-height:calc(100dvh - 64px);display:flex;flex-direction:column;color:#f4f2ed;border:1px solid #a6aaa877;border-radius:2px;background:linear-gradient(#151923bb,#151923db),var(--vn-scene,url('/nekojishi-assets/room-night.png')) center/cover;box-shadow:0 15px 65px #0007;overflow:hidden}
+.vn-modal header {display:flex;align-items:center;justify-content:space-between;gap:16px;padding:20px 28px;border-bottom:1px solid #fff3;flex:none}
+.vn-modal h2 {font-size:23px;font-weight:400;letter-spacing:3px;margin:0;color:#ffa222}
+.vn-close {font-size:28px;line-height:1;width:36px;height:36px;border:0;border-radius:4px;background:transparent;color:#fff;cursor:pointer}
+.vn-close:hover {background:#ffffff14}
+.vn-modal-content {padding:20px 28px 28px;min-height:0;overflow-y:auto;overscroll-behavior:contain}
+.vn-explanation {margin:0 0 20px;font-size:13px;color:#d7d4cc;line-height:1.8}
+.vn-character-selects {display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.vn-modal fieldset {border:1px solid #ffffff2b;padding:14px;margin:0 0 20px;min-width:0}
+.vn-modal legend {padding:0 8px;font-size:15px;color:#ffd294}
+.vn-character-cards {display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
+.vn-character-card {position:relative;display:flex;flex-direction:column;align-items:center;min-width:0;height:210px;padding:8px;border:1px solid transparent;background:#0001;color:#e9e6df;cursor:pointer}
+.vn-character-card img {width:100%;height:165px;min-height:0;object-fit:contain;object-position:center top}
+.vn-character-card strong {font-weight:400;font-size:14px;padding:8px}
+.vn-none-character {height:165px;display:grid;place-items:center;font-size:42px;color:#bbb}
+.vn-role-label {color:#ffd294!important;font-size:10px!important}
+[data-neko-music-mount] {flex:none;min-width:0;width:100%;box-sizing:border-box}
+.vn-music {pointer-events:auto;padding:10px;margin:7px 0 9px;border:1px solid #ffffff26;border-radius:10px;background:#101823bb;box-sizing:border-box;color:#eee;font:12px/1.5 "Microsoft YaHei",sans-serif;min-width:0;max-width:100%}
+.vn-music button {border:0;background:transparent;color:inherit;cursor:pointer;border-radius:5px;padding:3px 7px;min-width:24px;line-height:1.5}
+.vn-music button:hover,.vn-music button[aria-pressed="true"] {background:#ffffff18;color:#ffc571}
+.vn-music button:focus-visible {outline:2px solid #ffc571}
+.vn-music-heading {display:flex;align-items:center;gap:9px;margin-bottom:6px;min-width:0}
+.vn-music-heading>span {font-size:26px;color:#ffc571}
+.vn-music-heading>div {flex:1;min-width:0}
+.vn-music-heading strong {display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:12px;font-weight:500}
+.vn-music-heading small {display:block;color:#c7bfb2;font-size:10px}
+.vn-music input[type="range"] {display:block;width:100%;height:12px;accent-color:#e7ab52;cursor:pointer;margin:0}
+.vn-music-time {display:flex;justify-content:space-between;color:#bfb9af;font-size:10px}
+.vn-music-controls {display:flex;justify-content:space-between;align-items:center;gap:3px;margin:2px 0 7px}
+.vn-music-controls button:nth-child(2) {border:1px solid #ffcc7977;border-radius:50%;width:31px;height:31px;padding:0;display:grid;place-items:center}
+.vn-music-volume {display:flex;align-items:center;gap:6px;font-size:10px;color:#c7bfb2}
+.vn-music-volume input {flex:1;min-width:0}
+.vn-music-volume>span:last-child {width:30px;text-align:right}
+.vn-music-library {margin-top:10px;border-top:1px solid #ffffff26;padding-top:9px}
+.vn-music-library select {box-sizing:border-box;width:100%;min-width:0;padding:5px 4px;color:#eee;background:#172332;border:1px solid #ffffff35;border-radius:4px;font-size:11px}
+.vn-music-tracks {max-height:150px;overflow-y:auto;overscroll-behavior:contain;margin-top:6px}
+.vn-music-tracks button {display:block;width:100%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;text-align:left;font-size:11px;padding:4px 6px}
+.vn-music-tracks button[aria-current] {color:#ffd294;background:#ffffff0e}
+.vn-music-notice {font-size:10px;line-height:1.6;color:#d7cab6;margin:7px 0 0}
+.vn-character-card:hover,.vn-character-card[aria-pressed="true"] {border-color:#ffb746;background:#ffb74618}
+.vn-choice-row {display:flex;gap:10px;margin-bottom:15px}
+.vn-choice-row button {padding:8px 25px;border:1px solid #fff4;background:#0002;color:#fff;cursor:pointer}
+.vn-choice-row button[aria-pressed="true"] {border-color:#ffb746;color:#ffd294}
+.vn-scene-toolbar {display:flex;gap:12px;margin-bottom:12px}
+.vn-scene-toolbar :is(input,select) {background:#121a26c9;color:#f4f2ed;border:1px solid #fff5;border-radius:5px;padding:9px 12px;min-width:0}
+.vn-scene-toolbar input {flex:1}
+.vn-scene-grid {display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;max-height:430px;overflow-y:auto;overscroll-behavior:contain;padding:3px}
+.vn-scene-card {display:flex;flex-direction:column;align-items:stretch;padding:6px;gap:6px;min-width:0;border:1px solid #fff3;background:#121a26aa;color:#f4f2ed;text-align:left;cursor:pointer}
+.vn-scene-card:is(:hover,[aria-pressed="true"]) {border-color:#ffb746;background:#ffb74618}
+.vn-scene-card img {width:100%;aspect-ratio:4/3;object-fit:cover;background:#111;contain:paint}
+.vn-scene-card strong {font-weight:400;font-size:13px}
+.vn-scene-card small {font-size:10px;line-height:1.5;overflow-wrap:anywhere;color:#c3bfb6}
+.vn-scene-card:focus-visible {outline:2px solid #ffc36c;outline-offset:1px}
+.vn-check {display:flex;align-items:center;gap:9px;margin:13px 0;font-size:14px;color:#e9e6df}
+.vn-check input {accent-color:#ffa222}
+.vn-saves {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.vn-save-card {position:relative;display:flex;flex-direction:column;gap:9px;text-align:left;border:1px solid #b2b6b35c;background:#10182255;min-height:190px;padding:12px;color:#e8e6dd;cursor:pointer;overflow:hidden}
+.vn-save-card:hover,.vn-save-card[aria-current] {border-color:#ffb746;background:#ffb74610}
+.vn-save-preview {height:130px;background-size:cover;background-position:center;border:1px solid #fff3}
+.vn-save-card strong {font-size:14px;font-weight:400;line-height:1.5;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+.vn-save-card small {font-size:11px;color:#bbb9b1}
+.vn-save-new {justify-content:center;align-items:center}
+.vn-save-new>span {font-size:36px;color:#ffb746}
+.vn-notice {position:absolute;bottom:90px;left:50%;transform:translateX(-50%);color:#fff;background:#171b26ed;padding:12px 20px;border:1px solid #ffffff3d;pointer-events:auto}
+@media(max-width:750px){.vn-character-selects{grid-template-columns:1fr}.vn-saves,.vn-scene-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.vn-modal header{padding:15px}.vn-modal-content{padding:15px}.vn-status small{font-size:11px}.vn-native-actions .vn-game-button{width:23px;height:23px}}
+@media(prefers-reduced-motion:reduce){.vn-character{animation:none!important}.vn-game-button{transition:none}.vn-character{transition:none}}

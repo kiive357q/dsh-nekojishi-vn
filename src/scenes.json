@@ -1,0 +1,23 @@
+[
+  {
+    "id": "day",
+    "file": "room-day.png",
+    "label": "原创演示 · 晨光",
+    "source": "demo/day",
+    "group": "场景"
+  },
+  {
+    "id": "night",
+    "file": "room-night.png",
+    "label": "原创演示 · 星夜",
+    "source": "demo/night",
+    "group": "场景"
+  },
+  {
+    "id": "forest",
+    "file": "room-forest.png",
+    "label": "原创演示 · 林间",
+    "source": "demo/forest",
+    "group": "场景"
+  }
+]

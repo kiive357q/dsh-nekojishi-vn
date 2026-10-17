@@ -1,0 +1,63 @@
+{
+  "name": "dsh-nekojishi-vn",
+  "version": "0.4.0-alpha.1",
+  "private": true,
+  "description": "Unofficial visual-novel theme for DSH; game resources are imported locally and not redistributed.",
+  "type": "module",
+  "main": "lib/index.js",
+  "exports": {
+    ".": "./lib/index.js",
+    "./client": "./lib/client.js",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "lib",
+    "demo-assets",
+    "skills/*/SKILL.md",
+    "cordis.patch.yml",
+    "README.md",
+    "README.zh-TW.md",
+    "README.ja.md",
+    "LICENSE",
+    "THIRD_PARTY_NOTICES.md"
+  ],
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web",
+      "inject": [
+        "@deepseek-ai/dsh-client-ui-layout",
+        "@deepseek-ai/dsh-client-ui-conversation",
+        "@deepseek-ai/dsh-client-ui-theme",
+        "@deepseek-ai/dsh-client-ui-session",
+        "@deepseek-ai/dsh-client-ui-sidebar-right",
+        "@deepseek-ai/dsh-client-ui-workspace"
+      ]
+    }
+  },
+  "scripts": {
+    "build": "node scripts/generate-demo.mjs && node scripts/build.mjs",
+    "test": "node --test tests/*.test.mjs",
+    "verify:browser": "node tests/browser.mjs",
+    "prepack": "node scripts/check-local-resources.mjs",
+    "pack:local": "npm run build && npm pack",
+    "release:check": "node scripts/release-check.mjs"
+  },
+  "devDependencies": {
+    "esbuild": "0.25.12",
+    "playwright": "1.56.1",
+    "react": "18.3.1",
+    "react-dom": "18.3.1"
+  },
+  "repository": {
+    "url": "git+https://github.com/kiive357q/dsh-nekojishi-vn.git",
+    "type": "git"
+  },
+  "license": "MIT",
+  "engines": {
+    "node": ">=22",
+    "dsh": "0.2.1-rc.2"
+  }
+}

@@ -1,0 +1,13 @@
+node_modules/
+.cache/
+.verification/
+.venv/
+__pycache__/
+assets/
+skills/**/references/
+skills/provenance.json
+*.tgz
+release/
+.env
+.env.*
+!.env.example
